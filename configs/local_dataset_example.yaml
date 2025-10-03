@@ -1,0 +1,27 @@
+# Example configuration for using a local dataset
+
+model:
+  model_name: "distilgpt2"
+  model_type: "causal"
+  device: null
+  load_in_8bit: false
+  load_in_4bit: false
+  trust_remote_code: false
+
+inference:
+  max_length: 512
+  max_new_tokens: 100
+  temperature: 0.8
+  top_p: 0.9
+  top_k: 40
+  do_sample: true
+  num_return_sequences: 1
+  batch_size: 2
+
+dataset:
+  name: null  # Not using HuggingFace dataset
+  path: "./data"  # Path to local data directory
+  data_format: "json"  # Format: json, csv, txt, parquet
+  split: "train"
+  text_column: "text"
+  streaming: false

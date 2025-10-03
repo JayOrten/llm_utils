@@ -1,0 +1,26 @@
+# Example configuration for GPT-2 model inference
+
+model:
+  model_name: "gpt2"  # HuggingFace model name or path
+  model_type: "causal"  # 'causal' for GPT-like, 'seq2seq' for T5-like
+  device: null  # null for auto-detection, 'cuda', or 'cpu'
+  load_in_8bit: false  # Use 8-bit quantization
+  load_in_4bit: false  # Use 4-bit quantization
+  trust_remote_code: false  # Trust remote code for custom models
+
+inference:
+  max_length: 512  # Maximum sequence length
+  max_new_tokens: 100  # Maximum new tokens to generate (overrides max_length)
+  temperature: 1.0  # Sampling temperature
+  top_p: 0.95  # Nucleus sampling
+  top_k: 50  # Top-k sampling
+  do_sample: true  # Use sampling vs greedy decoding
+  num_return_sequences: 1  # Number of sequences per input
+  batch_size: 4  # Batch size for inference
+
+dataset:
+  name: null  # HuggingFace dataset name (e.g., 'wikitext')
+  path: null  # Path to local dataset
+  split: "test"  # Dataset split to use
+  text_column: "text"  # Column containing text data
+  streaming: false  # Stream dataset instead of loading fully

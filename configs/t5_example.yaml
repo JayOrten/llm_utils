@@ -1,0 +1,26 @@
+# Example configuration for T5 model
+
+model:
+  model_name: "t5-small"  # HuggingFace model name
+  model_type: "seq2seq"  # seq2seq for T5, BART, etc.
+  device: null  # Auto-detect
+  load_in_8bit: false
+  load_in_4bit: false
+  trust_remote_code: false
+
+inference:
+  max_length: 256
+  max_new_tokens: 50
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 50
+  do_sample: false  # Greedy decoding for T5
+  num_return_sequences: 1
+  batch_size: 8
+
+dataset:
+  name: "glue"  # HuggingFace dataset
+  config_name: "sst2"  # Dataset configuration
+  split: "validation"
+  text_column: "sentence"
+  streaming: false
